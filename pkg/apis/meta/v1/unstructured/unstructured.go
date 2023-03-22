@@ -234,6 +234,18 @@ func (u *Unstructured) GetNamespace() string {
 	return getNestedString(u.Object, "metadata", "namespace")
 }
 
+func (u *Unstructured) GetAvailableReplicas() string {
+	return getNestedString(u.Object, "status", "availableReplicas")
+}
+
+func (u *Unstructured) GetReplicas() string {
+	return getNestedString(u.Object, "status", "replicas")
+}
+
+func (u *Unstructured) GetReadyReplicas() string {
+	return getNestedString(u.Object, "status", "readyReplicas")
+}
+
 func (u *Unstructured) SetNamespace(namespace string) {
 	if len(namespace) == 0 {
 		RemoveNestedField(u.Object, "metadata", "namespace")
